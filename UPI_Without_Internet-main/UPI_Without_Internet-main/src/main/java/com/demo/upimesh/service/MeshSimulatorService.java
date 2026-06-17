@@ -84,12 +84,7 @@ public class MeshSimulatorService {
                 for (VirtualDevice dst : deviceList) {
                     if (dst == src) continue;
                     if (dst.holds(pkt.getPacketId())) continue;
-                    MeshPacket copy = new MeshPacket();
-                    copy.setPacketId(pkt.getPacketId());
-                    copy.setTtl(pkt.getTtl() - 1);
-                    copy.setCreatedAt(pkt.getCreatedAt());
-                    copy.setCiphertext(pkt.getCiphertext());
-                    dst.hold(copy);
+                    dst.hold(pkt.copyWithTtl(pkt.getTtl() - 1));
                     transfers++;
                 }
             }
