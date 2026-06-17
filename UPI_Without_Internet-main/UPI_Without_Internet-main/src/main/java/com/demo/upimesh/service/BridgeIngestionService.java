@@ -74,7 +74,7 @@ public class BridgeIngestionService {
 
         } catch (Exception e) {
             log.error("Ingestion error: {}", e.getMessage(), e);
-            return IngestResult.invalid("?", "internal_error: " + e.getMessage());
+            return IngestResult.invalid("?", "internal_error");
         }
     }
 

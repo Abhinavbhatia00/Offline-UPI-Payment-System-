@@ -154,6 +154,12 @@
 </div>
 
 <script>
+function esc(str) {
+    const d = document.createElement('div');
+    d.textContent = String(str);
+    return d.innerHTML;
+}
+
 function log(msg) {
     const el = document.getElementById('log');
     el.textContent = '[' + new Date().toLocaleTimeString() + '] ' + msg + '\n' + el.textContent;
@@ -165,12 +171,12 @@ async function refresh() {
     const devicesDiv = document.getElementById('devices');
     devicesDiv.innerHTML = m.devices.map(d => `
         <div class="device ${d.hasInternet ? 'bridge' : 'offline'}">
-            <strong>${d.deviceId}</strong>
+            <strong>${esc(d.deviceId)}</strong>
             <span class="badge ${d.hasInternet ? 'badge-online' : 'badge-offline'}">
                 ${d.hasInternet ? '🌐 4G' : '🚫 OFFLINE'}
             </span>
-            <span class="small">holding ${d.packetCount} packet(s)</span>
-            <div>${d.packetIds.map(id => `<span class="packet-id">${id}</span>`).join('')}</div>
+            <span class="small">holding ${parseInt(d.packetCount, 10)} packet(s)</span>
+            <div>${d.packetIds.map(id => `<span class="packet-id">${esc(id)}</span>`).join('')}</div>
         </div>
     `).join('');
     document.getElementById('cacheInfo').textContent =
@@ -179,7 +185,7 @@ async function refresh() {
     // Accounts
     const accs = await fetch('/api/accounts').then(r => r.json());
     document.querySelector('#accounts-table tbody').innerHTML = accs.map(a => `
-        <tr><td>${a.vpa}</td><td>${a.holderName}</td>
+        <tr><td>${esc(a.vpa)}</td><td>${esc(a.holderName)}</td>
             <td class="balance">₹${parseFloat(a.balance).toFixed(2)}</td></tr>
     `).join('');
 
@@ -187,11 +193,11 @@ async function refresh() {
     const txs = await fetch('/api/transactions').then(r => r.json());
     document.querySelector('#tx-table tbody').innerHTML = txs.map(t => `
         <tr>
-            <td>${t.id}</td><td>${t.senderVpa}</td><td>${t.receiverVpa}</td>
+            <td>${parseInt(t.id, 10)}</td><td>${esc(t.senderVpa)}</td><td>${esc(t.receiverVpa)}</td>
             <td class="balance">₹${parseFloat(t.amount).toFixed(2)}</td>
-            <td class="status-${t.status}">${t.status}</td>
-            <td>${t.bridgeNodeId}</td><td>${t.hopCount}</td>
-            <td class="small">${new Date(t.settledAt).toLocaleTimeString()}</td>
+            <td class="status-${esc(t.status)}">${esc(t.status)}</td>
+            <td>${esc(t.bridgeNodeId)}</td><td>${parseInt(t.hopCount, 10)}</td>
+            <td class="small">${esc(new Date(t.settledAt).toLocaleTimeString())}</td>
         </tr>
     `).join('');
 }
