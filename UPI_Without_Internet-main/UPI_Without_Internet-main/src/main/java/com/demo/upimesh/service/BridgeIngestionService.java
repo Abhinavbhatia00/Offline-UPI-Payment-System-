@@ -4,6 +4,7 @@ import com.demo.upimesh.crypto.HybridCryptoService;
 import com.demo.upimesh.model.MeshPacket;
 import com.demo.upimesh.model.PaymentInstruction;
 import com.demo.upimesh.model.Transaction;
+import com.demo.upimesh.util.HashUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -43,7 +44,7 @@ public class BridgeIngestionService {
             // ---- Idempotency gate ----
             if (!idempotency.claim(packetHash)) {
                 log.info("DUPLICATE packet {} from bridge {} — dropped",
-                        packetHash.substring(0, 12) + "...", bridgeNodeId);
+                        HashUtils.truncateHash(packetHash), bridgeNodeId);
                 return IngestResult.duplicate(packetHash);
             }
 
@@ -53,7 +54,7 @@ public class BridgeIngestionService {
                 instruction = crypto.decrypt(packet.getCiphertext());
             } catch (Exception e) {
                 log.warn("Decryption failed for packet {}: {}",
-                        packetHash.substring(0, 12) + "...", e.getMessage());
+                        HashUtils.truncateHash(packetHash), e.getMessage());
                 return IngestResult.invalid(packetHash, "decryption_failed");
             }
 
@@ -61,7 +62,7 @@ public class BridgeIngestionService {
             long ageSeconds = (Instant.now().toEpochMilli() - instruction.getSignedAt()) / 1000;
             if (ageSeconds > maxAgeSeconds) {
                 log.warn("Packet {} too old ({}s), rejected",
-                        packetHash.substring(0, 12) + "...", ageSeconds);
+                        HashUtils.truncateHash(packetHash), ageSeconds);
                 return IngestResult.invalid(packetHash, "stale_packet");
             }
             if (ageSeconds < -300) { // small clock-skew tolerance

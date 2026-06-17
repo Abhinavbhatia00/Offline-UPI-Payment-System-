@@ -51,6 +51,21 @@ public class Transaction {
 
     public Transaction() {}
 
+    public static Transaction create(PaymentInstruction instruction, String packetHash,
+                                     String bridgeNodeId, int hopCount, Status status) {
+        Transaction tx = new Transaction();
+        tx.setPacketHash(packetHash);
+        tx.setSenderVpa(instruction.getSenderVpa());
+        tx.setReceiverVpa(instruction.getReceiverVpa());
+        tx.setAmount(instruction.getAmount());
+        tx.setSignedAt(Instant.ofEpochMilli(instruction.getSignedAt()));
+        tx.setSettledAt(Instant.now());
+        tx.setBridgeNodeId(bridgeNodeId);
+        tx.setHopCount(hopCount);
+        tx.setStatus(status);
+        return tx;
+    }
+
     public Long getId() { return id; }
     public void setId(Long id) { this.id = id; }
 

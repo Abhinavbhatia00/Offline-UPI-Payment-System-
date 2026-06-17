@@ -5,6 +5,7 @@ import com.demo.upimesh.model.AccountRepository;
 import com.demo.upimesh.model.PaymentInstruction;
 import com.demo.upimesh.model.Transaction;
 import com.demo.upimesh.model.TransactionRepository;
+import com.demo.upimesh.util.HashUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,7 +13,6 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.math.BigDecimal;
-import java.time.Instant;
 
 /**
  * Where the actual ledger update happens. Wrapped in a DB transaction so either
@@ -60,37 +60,21 @@ public class SettlementService {
         accounts.save(sender);
         accounts.save(receiver);
 
-        Transaction tx = new Transaction();
-        tx.setPacketHash(packetHash);
-        tx.setSenderVpa(instruction.getSenderVpa());
-        tx.setReceiverVpa(instruction.getReceiverVpa());
-        tx.setAmount(amount);
-        tx.setSignedAt(Instant.ofEpochMilli(instruction.getSignedAt()));
-        tx.setSettledAt(Instant.now());
-        tx.setBridgeNodeId(bridgeNodeId);
-        tx.setHopCount(hopCount);
-        tx.setStatus(Transaction.Status.SETTLED);
+        Transaction tx = Transaction.create(instruction, packetHash, bridgeNodeId, hopCount,
+                Transaction.Status.SETTLED);
         transactions.save(tx);
 
         log.info("SETTLED ₹{} from {} to {} (packetHash={}, bridge={}, hops={})",
                 amount, sender.getVpa(), receiver.getVpa(),
-                packetHash.substring(0, 12) + "...", bridgeNodeId, hopCount);
+                HashUtils.truncateHash(packetHash), bridgeNodeId, hopCount);
 
         return tx;
     }
 
     private Transaction recordRejected(PaymentInstruction instruction, String packetHash,
                                        String bridgeNodeId, int hopCount) {
-        Transaction tx = new Transaction();
-        tx.setPacketHash(packetHash);
-        tx.setSenderVpa(instruction.getSenderVpa());
-        tx.setReceiverVpa(instruction.getReceiverVpa());
-        tx.setAmount(instruction.getAmount());
-        tx.setSignedAt(Instant.ofEpochMilli(instruction.getSignedAt()));
-        tx.setSettledAt(Instant.now());
-        tx.setBridgeNodeId(bridgeNodeId);
-        tx.setHopCount(hopCount);
-        tx.setStatus(Transaction.Status.REJECTED);
+        Transaction tx = Transaction.create(instruction, packetHash, bridgeNodeId, hopCount,
+                Transaction.Status.REJECTED);
         return transactions.save(tx);
     }
 }

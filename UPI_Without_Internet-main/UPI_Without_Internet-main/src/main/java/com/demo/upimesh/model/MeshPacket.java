@@ -44,4 +44,13 @@ public class MeshPacket {
 
     public String getCiphertext() { return ciphertext; }
     public void setCiphertext(String ciphertext) { this.ciphertext = ciphertext; }
+
+    public MeshPacket copyWithTtl(int newTtl) {
+        MeshPacket copy = new MeshPacket();
+        copy.setPacketId(this.packetId);
+        copy.setTtl(newTtl);
+        copy.setCreatedAt(this.createdAt);
+        copy.setCiphertext(this.ciphertext);
+        return copy;
+    }
 }
