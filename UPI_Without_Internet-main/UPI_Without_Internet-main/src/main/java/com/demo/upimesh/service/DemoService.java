@@ -14,6 +14,7 @@ import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
 import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.time.Instant;
 import java.util.UUID;
 
@@ -53,31 +54,41 @@ public class DemoService {
      * public key during a previous online session.
      */
     public MeshPacket createPacket(String senderVpa, String receiverVpa,
-                                   BigDecimal amount, String pin, int ttl) throws Exception {
-        PaymentInstruction instruction = new PaymentInstruction(
-                senderVpa,
-                receiverVpa,
-                amount,
-                sha256Hex(pin),
-                UUID.randomUUID().toString(),       // nonce — guarantees uniqueness
-                Instant.now().toEpochMilli()        // signedAt — for freshness check
-        );
+                                   BigDecimal amount, String pin, int ttl) {
+        try {
+            PaymentInstruction instruction = new PaymentInstruction(
+                    senderVpa,
+                    receiverVpa,
+                    amount,
+                    sha256Hex(pin),
+                    UUID.randomUUID().toString(),
+                    Instant.now().toEpochMilli()
+            );
 
-        String ciphertext = crypto.encrypt(instruction, serverKey.getPublicKey());
+            String ciphertext = crypto.encrypt(instruction, serverKey.getPublicKey());
 
-        MeshPacket packet = new MeshPacket();
-        packet.setPacketId(UUID.randomUUID().toString());
-        packet.setTtl(ttl);
-        packet.setCreatedAt(Instant.now().toEpochMilli());
-        packet.setCiphertext(ciphertext);
-        return packet;
+            MeshPacket packet = new MeshPacket();
+            packet.setPacketId(UUID.randomUUID().toString());
+            packet.setTtl(ttl);
+            packet.setCreatedAt(Instant.now().toEpochMilli());
+            packet.setCiphertext(ciphertext);
+            return packet;
+        } catch (Exception e) {
+            log.error("Failed to create mesh packet for {} -> {}: {}",
+                    senderVpa, receiverVpa, e.getMessage(), e);
+            throw new RuntimeException("Packet creation failed", e);
+        }
     }
 
-    private String sha256Hex(String input) throws Exception {
-        MessageDigest md = MessageDigest.getInstance("SHA-256");
-        byte[] hash = md.digest(input.getBytes());
-        StringBuilder hex = new StringBuilder();
-        for (byte b : hash) hex.append(String.format("%02x", b));
-        return hex.toString();
+    private String sha256Hex(String input) {
+        try {
+            MessageDigest md = MessageDigest.getInstance("SHA-256");
+            byte[] hash = md.digest(input.getBytes());
+            StringBuilder hex = new StringBuilder();
+            for (byte b : hash) hex.append(String.format("%02x", b));
+            return hex.toString();
+        } catch (NoSuchAlgorithmException e) {
+            throw new IllegalStateException("SHA-256 not available in this JVM", e);
+        }
     }
 }

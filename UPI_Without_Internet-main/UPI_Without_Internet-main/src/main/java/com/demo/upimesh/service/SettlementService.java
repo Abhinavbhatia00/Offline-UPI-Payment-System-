@@ -36,6 +36,11 @@ public class SettlementService {
     public Transaction settle(PaymentInstruction instruction, String packetHash,
                               String bridgeNodeId, int hopCount) {
 
+        if (instruction.getSenderVpa().equals(instruction.getReceiverVpa())) {
+            throw new IllegalArgumentException(
+                    "Sender and receiver cannot be the same: " + instruction.getSenderVpa());
+        }
+
         Account sender = accounts.findById(instruction.getSenderVpa())
                 .orElseThrow(() -> new IllegalArgumentException(
                         "Unknown sender VPA: " + instruction.getSenderVpa()));
@@ -45,7 +50,7 @@ public class SettlementService {
                         "Unknown receiver VPA: " + instruction.getReceiverVpa()));
 
         BigDecimal amount = instruction.getAmount();
-        if (amount.signum() <= 0) {
+        if (amount == null || amount.signum() <= 0) {
             throw new IllegalArgumentException("Amount must be positive");
         }
 
