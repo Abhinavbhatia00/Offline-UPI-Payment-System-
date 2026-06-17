@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dog Breeds — Pawsopedia</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- ======= Navigation ======= -->
+  <nav class="navbar" id="navbar">
+    <div class="container">
+      <a href="index.html" class="nav-logo">
+        <span class="logo-icon">&#128062;</span> Pawsopedia
+      </a>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="dogs.html" class="active">Dogs</a></li>
+        <li><a href="cats.html">Cats</a></li>
+        <li><a href="comparison.html">Compare</a></li>
+        <li><a href="about.html">About</a></li>
+      </ul>
+      <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- ======= Page Header ======= -->
+  <section class="page-header">
+    <h1>&#128054; Dog Breeds</h1>
+    <p>Explore our collection of popular dog breeds — from loyal Labradors to energetic Huskies.</p>
+  </section>
+
+  <!-- ======= Filter Bar ======= -->
+  <div class="filter-bar">
+    <input type="text" class="search-input" id="searchInput" placeholder="Search dog breeds...">
+  </div>
+
+  <!-- ======= Breed Grid ======= -->
+  <section class="featured-section" style="padding-top: 0;">
+    <div class="container">
+      <div class="breed-grid" id="breedGrid">
+
+        <!-- 1. Labrador Retriever -->
+        <div class="breed-card" data-category="dog" data-name="Labrador Retriever">
+          <img class="card-image" src="https://images.unsplash.com/photo-1579996232069-0a262e7a31b7?w=560&h=400&fit=crop" alt="Labrador Retriever">
+          <div class="card-body">
+            <h3>Labrador Retriever</h3>
+            <p class="breed-desc">America's most popular breed. Friendly, outgoing, and high-spirited companions who have more than enough affection to go around.</p>
+            <div class="card-meta">
+              <span class="tag tag-temperament">Friendly &amp; Outgoing</span>
+              <span class="tag tag-lifespan">10-12 yrs</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- 2. Golden Retriever -->
+        <div class="breed-card" data-category="dog" data-name="Golden Retriever">
+          <img class="card-image" src="https://images.unsplash.com/photo-1633722715463-d30f4f325e24?w=560&h=400&fit=crop" alt="Golden Retriever">
+          <div class="card-body">
+            <h3>Golden Retriever</h3>
+            <p class="breed-desc">Intelligent, friendly, and devoted. Golden Retrievers are serious workers at hunting and as guide dogs, yet they love playtime.</p>
+            <div class="card-meta">
+              <span class="tag tag-temperament">Loyal &amp; Intelligent</span>
+              <span class="tag tag-lifespan">10-12 yrs</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- 3. German Shepherd -->
+        <div class="breed-card" data-category="dog" data-name="German Shepherd">
+          <img class="card-image" src="https://images.unsplash.com/photo-1589941013453-ec89f33b5e95?w=560&h=400&fit=crop" alt="German Shepherd">
+          <div class="card-body">
+            <h3>German Shepherd</h3>
+            <p class="breed-desc">Confident, courageous, and smart. The world's leading police, guard, and military dog — and a loving family pet.</p>
+            <div class="card-meta">
+              <span class="tag tag-temperament">Courageous &amp; Confident</span>
+              <span class="tag tag-lifespan">9-13 yrs</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- 4. Beagle -->
+        <div class="breed-card" data-category="dog" data-name="Beagle">
+          <img class="card-image" src="https://images.unsplash.com/photo-1505628346881-b72b27e84530?w=560&h=400&fit=crop" alt="Beagle">
+          <div class="card-body">
+            <h3>Beagle</h3>
+            <p class="breed-desc">Merry, friendly, and curious. Beagles are excellent family dogs, known for their nose and their happy-go-lucky temperament.</p>
+            <div class="card-meta">
+              <span class="tag tag-temperament">Curious &amp; Merry</span>
+              <span class="tag tag-lifespan">10-15 yrs</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- 5. Siberian Husky -->
+        <div class="breed-card" data-category="dog" data-name="Husky">
+          <img class="card-image" src="https://images.unsplash.com/photo-1605568427561-40dd23c2acea?w=560&h=400&fit=crop" alt="Siberian Husky">
+          <div class="card-body">
+            <h3>Siberian Husky</h3>
+            <p class="breed-desc">Loyal, mischievous, and outgoing. Built for endurance and speed, Huskies are strikingly beautiful arctic working dogs.</p>
+            <div class="card-meta">
+              <span class="tag tag-temperament">Energetic &amp; Loyal</span>
+              <span class="tag tag-lifespan">12-14 yrs</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- 6. Poodle -->
+        <div class="breed-card" data-category="dog" data-name="Poodle">
+          <img class="card-image" src="https://images.unsplash.com/photo-1616149703847-e228c0550023?w=560&h=400&fit=crop" alt="Poodle">
+          <div class="card-body">
+            <h3>Poodle</h3>
+            <p class="breed-desc">Exceptionally smart and active. Poodles come in three sizes and are among the most trainable dogs in the world.</p>
+            <div class="card-meta">
+              <span class="tag tag-temperament">Intelligent &amp; Active</span>
+              <span class="tag tag-lifespan">12-15 yrs</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- 7. Rottweiler -->
+        <div class="breed-card" data-category="dog" data-name="Rottweiler">
+          <img class="card-image" src="https://images.unsplash.com/photo-1567752881298-894bb81f9379?w=560&h=400&fit=crop" alt="Rottweiler">
+          <div class="card-body">
+            <h3>Rottweiler</h3>
+            <p class="breed-desc">Loyal, loving, and confident guardian. Rottweilers are powerful working dogs with a gentle heart for their family.</p>
+            <div class="card-meta">
+              <span class="tag tag-temperament">Loyal &amp; Confident</span>
+              <span class="tag tag-lifespan">8-10 yrs</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- 8. Doberman -->
+        <div class="breed-card" data-category="dog" data-name="Doberman">
+          <img class="card-image" src="https://images.unsplash.com/photo-1610312278520-bcc893a3ff1d?w=560&h=400&fit=crop" alt="Doberman Pinscher">
+          <div class="card-body">
+            <h3>Doberman Pinscher</h3>
+            <p class="breed-desc">Fearless, loyal, and alert. Dobermans are among the world's finest protection dogs while being loving companions at home.</p>
+            <div class="card-meta">
+              <span class="tag tag-temperament">Fearless &amp; Alert</span>
+              <span class="tag tag-lifespan">10-12 yrs</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- 9. Shih Tzu -->
+        <div class="breed-card" data-category="dog" data-name="Shih Tzu">
+          <img class="card-image" src="https://images.unsplash.com/photo-1585559700398-1385b3a8aeb6?w=560&h=400&fit=crop" alt="Shih Tzu">
+          <div class="card-body">
+            <h3>Shih Tzu</h3>
+            <p class="breed-desc">Affectionate, happy, and outgoing. Bred to be a royal lap dog, the Shih Tzu is charming and devoted.</p>
+            <div class="card-meta">
+              <span class="tag tag-temperament">Affectionate &amp; Happy</span>
+              <span class="tag tag-lifespan">10-16 yrs</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- 10. Border Collie -->
+        <div class="breed-card" data-category="dog" data-name="Border Collie">
+          <img class="card-image" src="https://images.unsplash.com/photo-1503256207526-0d5d80fa2f47?w=560&h=400&fit=crop" alt="Border Collie">
+          <div class="card-body">
+            <h3>Border Collie</h3>
+            <p class="breed-desc">Remarkably bright workaholic. Border Collies are the Einstein of the dog world, excelling in agility and herding.</p>
+            <div class="card-meta">
+              <span class="tag tag-temperament">Smart &amp; Energetic</span>
+              <span class="tag tag-lifespan">12-15 yrs</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- 11. Dalmatian -->
+        <div class="breed-card" data-category="dog" data-name="Dalmatian">
+          <img class="card-image" src="https://images.unsplash.com/photo-1541599468348-e603c0b2bf01?w=560&h=400&fit=crop" alt="Dalmatian">
+          <div class="card-body">
+            <h3>Dalmatian</h3>
+            <p class="breed-desc">Dignified, smart, and outgoing. Famous for their spotted coat, Dalmatians are athletic and love to run.</p>
+            <div class="card-meta">
+              <span class="tag tag-temperament">Outgoing &amp; Athletic</span>
+              <span class="tag tag-lifespan">11-13 yrs</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- 12. Corgi -->
+        <div class="breed-card" data-category="dog" data-name="Corgi">
+          <img class="card-image" src="https://images.unsplash.com/photo-1612536057832-2ff7ead58194?w=560&h=400&fit=crop" alt="Pembroke Welsh Corgi">
+          <div class="card-body">
+            <h3>Pembroke Welsh Corgi</h3>
+            <p class="breed-desc">Bold, playful, and affectionate. Corgis are surprisingly athletic and love being part of the family action.</p>
+            <div class="card-meta">
+              <span class="tag tag-temperament">Playful &amp; Bold</span>
+              <span class="tag tag-lifespan">12-13 yrs</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- No results message -->
+      <div class="no-results" id="noResults">
+        No breeds found matching your search. Try a different name!
+      </div>
+    </div>
+  </section>
+
+  <!-- ======= Footer ======= -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-logo">&#128062; Pawsopedia</div>
+      <div class="footer-links">
+        <a href="index.html">Home</a>
+        <a href="dogs.html">Dogs</a>
+        <a href="cats.html">Cats</a>
+        <a href="comparison.html">Compare</a>
+        <a href="about.html">About</a>
+      </div>
+      <div class="social-icons">
+        <a href="#" aria-label="Facebook">fb</a>
+        <a href="#" aria-label="Twitter">tw</a>
+        <a href="#" aria-label="Instagram">ig</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2026 Pawsopedia. All rights reserved. Made with &#10084;&#65039; for pet lovers.</p>
+    </div>
+  </footer>
+
+  <button class="scroll-top-btn" id="scrollTopBtn" aria-label="Scroll to top">&#8679;</button>
+  <script src="js/script.js"></script>
+</body>
+</html>

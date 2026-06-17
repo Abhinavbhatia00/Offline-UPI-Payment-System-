@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Breed Comparison — Pawsopedia</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- ======= Navigation ======= -->
+  <nav class="navbar" id="navbar">
+    <div class="container">
+      <a href="index.html" class="nav-logo">
+        <span class="logo-icon">&#128062;</span> Pawsopedia
+      </a>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="dogs.html">Dogs</a></li>
+        <li><a href="cats.html">Cats</a></li>
+        <li><a href="comparison.html" class="active">Compare</a></li>
+        <li><a href="about.html">About</a></li>
+      </ul>
+      <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- ======= Page Header ======= -->
+  <section class="page-header">
+    <h1>&#128200; Breed Comparison</h1>
+    <p>Compare dog and cat breeds side by side to find your perfect companion.</p>
+  </section>
+
+  <!-- ======= Filter Bar ======= -->
+  <div class="filter-bar">
+    <input type="text" class="search-input" id="comparisonSearch" placeholder="Filter table by breed name...">
+    <button class="filter-btn active" data-filter="all">All</button>
+    <button class="filter-btn" data-filter="dog">Dogs</button>
+    <button class="filter-btn" data-filter="cat">Cats</button>
+  </div>
+
+  <!-- ======= Comparison Controls ======= -->
+  <section class="comparison-section">
+    <div class="container">
+
+      <div class="comparison-controls">
+        <select id="breedA">
+          <option value="">— Select Breed A —</option>
+          <optgroup label="Dogs">
+            <option value="labrador">Labrador Retriever</option>
+            <option value="golden">Golden Retriever</option>
+            <option value="german-shepherd">German Shepherd</option>
+            <option value="beagle">Beagle</option>
+            <option value="husky">Siberian Husky</option>
+            <option value="poodle">Poodle</option>
+            <option value="rottweiler">Rottweiler</option>
+            <option value="doberman">Doberman</option>
+            <option value="shih-tzu">Shih Tzu</option>
+            <option value="border-collie">Border Collie</option>
+            <option value="dalmatian">Dalmatian</option>
+            <option value="corgi">Corgi</option>
+          </optgroup>
+          <optgroup label="Cats">
+            <option value="persian">Persian</option>
+            <option value="maine-coon">Maine Coon</option>
+            <option value="siamese">Siamese</option>
+            <option value="bengal">Bengal</option>
+            <option value="ragdoll">Ragdoll</option>
+            <option value="british-shorthair">British Shorthair</option>
+            <option value="sphynx">Sphynx</option>
+            <option value="russian-blue">Russian Blue</option>
+            <option value="scottish-fold">Scottish Fold</option>
+            <option value="birman">Birman</option>
+            <option value="abyssinian">Abyssinian</option>
+            <option value="norwegian">Norwegian Forest Cat</option>
+          </optgroup>
+        </select>
+
+        <select id="breedB">
+          <option value="">— Select Breed B —</option>
+          <optgroup label="Dogs">
+            <option value="labrador">Labrador Retriever</option>
+            <option value="golden">Golden Retriever</option>
+            <option value="german-shepherd">German Shepherd</option>
+            <option value="beagle">Beagle</option>
+            <option value="husky">Siberian Husky</option>
+            <option value="poodle">Poodle</option>
+            <option value="rottweiler">Rottweiler</option>
+            <option value="doberman">Doberman</option>
+            <option value="shih-tzu">Shih Tzu</option>
+            <option value="border-collie">Border Collie</option>
+            <option value="dalmatian">Dalmatian</option>
+            <option value="corgi">Corgi</option>
+          </optgroup>
+          <optgroup label="Cats">
+            <option value="persian">Persian</option>
+            <option value="maine-coon">Maine Coon</option>
+            <option value="siamese">Siamese</option>
+            <option value="bengal">Bengal</option>
+            <option value="ragdoll">Ragdoll</option>
+            <option value="british-shorthair">British Shorthair</option>
+            <option value="sphynx">Sphynx</option>
+            <option value="russian-blue">Russian Blue</option>
+            <option value="scottish-fold">Scottish Fold</option>
+            <option value="birman">Birman</option>
+            <option value="abyssinian">Abyssinian</option>
+            <option value="norwegian">Norwegian Forest Cat</option>
+          </optgroup>
+        </select>
+      </div>
+
+      <!-- Side-by-side comparison result -->
+      <div id="comparisonResult" class="comparison-table-wrapper" style="margin-bottom: 3rem;">
+        <p style="text-align:center; color: var(--color-text-muted);">Select two breeds above to compare them side by side.</p>
+      </div>
+
+      <!-- ======= Full Comparison Table ======= -->
+      <h2 class="section-title" style="margin-top: 1rem;">All Breeds at a Glance</h2>
+      <p class="section-subtitle">Filter by name or category using the controls above</p>
+
+      <div class="comparison-table-wrapper">
+        <table class="comparison-table" id="comparisonTable">
+          <thead>
+            <tr>
+              <th>Breed</th>
+              <th>Type</th>
+              <th>Size</th>
+              <th>Energy Level</th>
+              <th>Friendliness</th>
+              <th>Grooming</th>
+              <th>Lifespan</th>
+            </tr>
+          </thead>
+          <tbody>
+            <!-- Dogs -->
+            <tr data-type="dog" data-name="Labrador Retriever">
+              <td>Labrador Retriever</td><td>Dog</td><td>Large</td><td>High</td><td>Very High</td><td>Moderate</td><td>10-12 yrs</td>
+            </tr>
+            <tr data-type="dog" data-name="Golden Retriever">
+              <td>Golden Retriever</td><td>Dog</td><td>Large</td><td>High</td><td>Very High</td><td>High</td><td>10-12 yrs</td>
+            </tr>
+            <tr data-type="dog" data-name="German Shepherd">
+              <td>German Shepherd</td><td>Dog</td><td>Large</td><td>High</td><td>High</td><td>Moderate</td><td>9-13 yrs</td>
+            </tr>
+            <tr data-type="dog" data-name="Beagle">
+              <td>Beagle</td><td>Dog</td><td>Medium</td><td>High</td><td>Very High</td><td>Low</td><td>10-15 yrs</td>
+            </tr>
+            <tr data-type="dog" data-name="Siberian Husky">
+              <td>Siberian Husky</td><td>Dog</td><td>Medium</td><td>Very High</td><td>High</td><td>High</td><td>12-14 yrs</td>
+            </tr>
+            <tr data-type="dog" data-name="Poodle">
+              <td>Poodle</td><td>Dog</td><td>Varies</td><td>High</td><td>High</td><td>High</td><td>12-15 yrs</td>
+            </tr>
+            <tr data-type="dog" data-name="Rottweiler">
+              <td>Rottweiler</td><td>Dog</td><td>Large</td><td>Moderate</td><td>Moderate</td><td>Low</td><td>8-10 yrs</td>
+            </tr>
+            <tr data-type="dog" data-name="Doberman">
+              <td>Doberman</td><td>Dog</td><td>Large</td><td>High</td><td>Moderate</td><td>Low</td><td>10-12 yrs</td>
+            </tr>
+            <tr data-type="dog" data-name="Shih Tzu">
+              <td>Shih Tzu</td><td>Dog</td><td>Small</td><td>Low</td><td>Very High</td><td>High</td><td>10-16 yrs</td>
+            </tr>
+            <tr data-type="dog" data-name="Border Collie">
+              <td>Border Collie</td><td>Dog</td><td>Medium</td><td>Very High</td><td>High</td><td>Moderate</td><td>12-15 yrs</td>
+            </tr>
+            <tr data-type="dog" data-name="Dalmatian">
+              <td>Dalmatian</td><td>Dog</td><td>Large</td><td>Very High</td><td>High</td><td>Low</td><td>11-13 yrs</td>
+            </tr>
+            <tr data-type="dog" data-name="Corgi">
+              <td>Corgi</td><td>Dog</td><td>Small</td><td>High</td><td>Very High</td><td>Moderate</td><td>12-13 yrs</td>
+            </tr>
+            <!-- Cats -->
+            <tr data-type="cat" data-name="Persian">
+              <td>Persian</td><td>Cat</td><td>Medium</td><td>Low</td><td>High</td><td>Very High</td><td>12-17 yrs</td>
+            </tr>
+            <tr data-type="cat" data-name="Maine Coon">
+              <td>Maine Coon</td><td>Cat</td><td>Large</td><td>Moderate</td><td>Very High</td><td>High</td><td>12-15 yrs</td>
+            </tr>
+            <tr data-type="cat" data-name="Siamese">
+              <td>Siamese</td><td>Cat</td><td>Medium</td><td>High</td><td>Very High</td><td>Low</td><td>15-20 yrs</td>
+            </tr>
+            <tr data-type="cat" data-name="Bengal">
+              <td>Bengal</td><td>Cat</td><td>Medium</td><td>Very High</td><td>High</td><td>Low</td><td>12-16 yrs</td>
+            </tr>
+            <tr data-type="cat" data-name="Ragdoll">
+              <td>Ragdoll</td><td>Cat</td><td>Large</td><td>Low</td><td>Very High</td><td>Moderate</td><td>12-15 yrs</td>
+            </tr>
+            <tr data-type="cat" data-name="British Shorthair">
+              <td>British Shorthair</td><td>Cat</td><td>Medium</td><td>Low</td><td>High</td><td>Moderate</td><td>12-20 yrs</td>
+            </tr>
+            <tr data-type="cat" data-name="Sphynx">
+              <td>Sphynx</td><td>Cat</td><td>Medium</td><td>High</td><td>Very High</td><td>Moderate</td><td>8-14 yrs</td>
+            </tr>
+            <tr data-type="cat" data-name="Russian Blue">
+              <td>Russian Blue</td><td>Cat</td><td>Medium</td><td>Moderate</td><td>Moderate</td><td>Low</td><td>15-20 yrs</td>
+            </tr>
+            <tr data-type="cat" data-name="Scottish Fold">
+              <td>Scottish Fold</td><td>Cat</td><td>Medium</td><td>Moderate</td><td>High</td><td>Moderate</td><td>11-14 yrs</td>
+            </tr>
+            <tr data-type="cat" data-name="Birman">
+              <td>Birman</td><td>Cat</td><td>Medium</td><td>Moderate</td><td>Very High</td><td>Moderate</td><td>12-16 yrs</td>
+            </tr>
+            <tr data-type="cat" data-name="Abyssinian">
+              <td>Abyssinian</td><td>Cat</td><td>Medium</td><td>Very High</td><td>High</td><td>Low</td><td>9-15 yrs</td>
+            </tr>
+            <tr data-type="cat" data-name="Norwegian Forest Cat">
+              <td>Norwegian Forest Cat</td><td>Cat</td><td>Large</td><td>Moderate</td><td>High</td><td>High</td><td>12-16 yrs</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="no-results" id="noResults">
+        No breeds match your filter. Try a different search term or category.
+      </div>
+    </div>
+  </section>
+
+  <!-- ======= Footer ======= -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-logo">&#128062; Pawsopedia</div>
+      <div class="footer-links">
+        <a href="index.html">Home</a>
+        <a href="dogs.html">Dogs</a>
+        <a href="cats.html">Cats</a>
+        <a href="comparison.html">Compare</a>
+        <a href="about.html">About</a>
+      </div>
+      <div class="social-icons">
+        <a href="#" aria-label="Facebook">fb</a>
+        <a href="#" aria-label="Twitter">tw</a>
+        <a href="#" aria-label="Instagram">ig</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2026 Pawsopedia. All rights reserved. Made with &#10084;&#65039; for pet lovers.</p>
+    </div>
+  </footer>
+
+  <button class="scroll-top-btn" id="scrollTopBtn" aria-label="Scroll to top">&#8679;</button>
+  <script src="js/script.js"></script>
+</body>
+</html>
