@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cat Breeds — Pawsopedia</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- ======= Navigation ======= -->
+  <nav class="navbar" id="navbar">
+    <div class="container">
+      <a href="index.html" class="nav-logo">
+        <span class="logo-icon">&#128062;</span> Pawsopedia
+      </a>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="dogs.html">Dogs</a></li>
+        <li><a href="cats.html" class="active">Cats</a></li>
+        <li><a href="comparison.html">Compare</a></li>
+        <li><a href="about.html">About</a></li>
+      </ul>
+      <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- ======= Page Header ======= -->
+  <section class="page-header">
+    <h1>&#128049; Cat Breeds</h1>
+    <p>Meet our feline friends — from elegant Persians to majestic Maine Coons.</p>
+  </section>
+
+  <!-- ======= Filter Bar ======= -->
+  <div class="filter-bar">
+    <input type="text" class="search-input" id="searchInput" placeholder="Search cat breeds...">
+  </div>
+
+  <!-- ======= Breed Grid ======= -->
+  <section class="featured-section" style="padding-top: 0;">
+    <div class="container">
+      <div class="breed-grid" id="breedGrid">
+
+        <!-- 1. Persian -->
+        <div class="breed-card" data-category="cat" data-name="Persian">
+          <img class="card-image" src="https://images.unsplash.com/photo-1618826411640-d6df44dd3f7a?w=560&h=400&fit=crop" alt="Persian Cat">
+          <div class="card-body">
+            <h3>Persian</h3>
+            <p class="breed-desc">Gentle, calm, and sweet-natured. The Persian's luxurious coat and pansy-like face make them the glamour puss of cats.</p>
+            <div class="card-meta">
+              <span class="tag tag-temperament">Calm &amp; Gentle</span>
+              <span class="tag tag-lifespan">12-17 yrs</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- 2. Maine Coon -->
+        <div class="breed-card" data-category="cat" data-name="Maine Coon">
+          <img class="card-image" src="https://images.unsplash.com/photo-1615497001839-b0a0eac3274c?w=560&h=400&fit=crop" alt="Maine Coon">
+          <div class="card-body">
+            <h3>Maine Coon</h3>
+            <p class="breed-desc">The gentle giant. Sociable, intelligent, and playful, Maine Coons are one of the largest domesticated cat breeds.</p>
+            <div class="card-meta">
+              <span class="tag tag-temperament">Sociable &amp; Playful</span>
+              <span class="tag tag-lifespan">12-15 yrs</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- 3. Siamese -->
+        <div class="breed-card" data-category="cat" data-name="Siamese">
+          <img class="card-image" src="https://images.unsplash.com/photo-1568043210943-0b8b09e1e839?w=560&h=400&fit=crop" alt="Siamese Cat">
+          <div class="card-body">
+            <h3>Siamese</h3>
+            <p class="breed-desc">Vocal, affectionate, and striking. Siamese cats are known for their blue almond-shaped eyes and social personality.</p>
+            <div class="card-meta">
+              <span class="tag tag-temperament">Vocal &amp; Affectionate</span>
+              <span class="tag tag-lifespan">15-20 yrs</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- 4. Bengal -->
+        <div class="breed-card" data-category="cat" data-name="Bengal">
+          <img class="card-image" src="https://images.unsplash.com/photo-1609098028777-81e6f0e16c44?w=560&h=400&fit=crop" alt="Bengal Cat">
+          <div class="card-body">
+            <h3>Bengal</h3>
+            <p class="breed-desc">Wildly beautiful and endlessly energetic. Bengals have a distinctive spotted coat and love water and climbing.</p>
+            <div class="card-meta">
+              <span class="tag tag-temperament">Energetic &amp; Curious</span>
+              <span class="tag tag-lifespan">12-16 yrs</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- 5. Ragdoll -->
+        <div class="breed-card" data-category="cat" data-name="Ragdoll">
+          <img class="card-image" src="https://images.unsplash.com/photo-1592194996308-7b43878e84a6?w=560&h=400&fit=crop" alt="Ragdoll Cat">
+          <div class="card-body">
+            <h3>Ragdoll</h3>
+            <p class="breed-desc">Docile, gentle, and affectionate. Ragdolls go limp when picked up, earning their unique name.</p>
+            <div class="card-meta">
+              <span class="tag tag-temperament">Docile &amp; Gentle</span>
+              <span class="tag tag-lifespan">12-15 yrs</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- 6. British Shorthair -->
+        <div class="breed-card" data-category="cat" data-name="British Shorthair">
+          <img class="card-image" src="https://images.unsplash.com/photo-1573865526739-10659fec78a5?w=560&h=400&fit=crop" alt="British Shorthair">
+          <div class="card-body">
+            <h3>British Shorthair</h3>
+            <p class="breed-desc">Easy-going, loyal, and dignified. The British Shorthair is a sturdy, plush-coated companion.</p>
+            <div class="card-meta">
+              <span class="tag tag-temperament">Easy-going &amp; Loyal</span>
+              <span class="tag tag-lifespan">12-20 yrs</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- 7. Sphynx -->
+        <div class="breed-card" data-category="cat" data-name="Sphynx">
+          <img class="card-image" src="https://images.unsplash.com/photo-1529778873920-4da4926a72c2?w=560&h=400&fit=crop" alt="Sphynx Cat">
+          <div class="card-body">
+            <h3>Sphynx</h3>
+            <p class="breed-desc">Hairless but full of love. Sphynx cats are extroverted, energetic, and crave human attention.</p>
+            <div class="card-meta">
+              <span class="tag tag-temperament">Extroverted &amp; Energetic</span>
+              <span class="tag tag-lifespan">8-14 yrs</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- 8. Russian Blue -->
+        <div class="breed-card" data-category="cat" data-name="Russian Blue">
+          <img class="card-image" src="https://images.unsplash.com/photo-1511044568932-338cba0ad803?w=560&h=400&fit=crop" alt="Russian Blue">
+          <div class="card-body">
+            <h3>Russian Blue</h3>
+            <p class="breed-desc">Elegant, reserved, and intelligent. Russian Blues have a shimmering silver-blue coat and emerald green eyes.</p>
+            <div class="card-meta">
+              <span class="tag tag-temperament">Reserved &amp; Intelligent</span>
+              <span class="tag tag-lifespan">15-20 yrs</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- 9. Scottish Fold -->
+        <div class="breed-card" data-category="cat" data-name="Scottish Fold">
+          <img class="card-image" src="https://images.unsplash.com/photo-1596854407944-bf87f6fdd49e?w=560&h=400&fit=crop" alt="Scottish Fold">
+          <div class="card-body">
+            <h3>Scottish Fold</h3>
+            <p class="breed-desc">Owl-like and sweet-tempered. Scottish Folds are known for their unique folded ears and loving personality.</p>
+            <div class="card-meta">
+              <span class="tag tag-temperament">Sweet &amp; Adaptable</span>
+              <span class="tag tag-lifespan">11-14 yrs</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- 10. Birman -->
+        <div class="breed-card" data-category="cat" data-name="Birman">
+          <img class="card-image" src="https://images.unsplash.com/photo-1606214174585-fe31582dc6ee?w=560&h=400&fit=crop" alt="Birman Cat">
+          <div class="card-body">
+            <h3>Birman</h3>
+            <p class="breed-desc">Gentle, quiet, and devoted. Birmans have silky coats, deep blue eyes, and white-gloved paws.</p>
+            <div class="card-meta">
+              <span class="tag tag-temperament">Gentle &amp; Devoted</span>
+              <span class="tag tag-lifespan">12-16 yrs</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- 11. Abyssinian -->
+        <div class="breed-card" data-category="cat" data-name="Abyssinian">
+          <img class="card-image" src="https://images.unsplash.com/photo-1513360371669-4adf3dd7dff8?w=560&h=400&fit=crop" alt="Abyssinian Cat">
+          <div class="card-body">
+            <h3>Abyssinian</h3>
+            <p class="breed-desc">Active, playful, and highly intelligent. One of the oldest known cat breeds with a ticked, wildcat look.</p>
+            <div class="card-meta">
+              <span class="tag tag-temperament">Active &amp; Playful</span>
+              <span class="tag tag-lifespan">9-15 yrs</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- 12. Norwegian Forest Cat -->
+        <div class="breed-card" data-category="cat" data-name="Norwegian Forest Cat">
+          <img class="card-image" src="https://images.unsplash.com/photo-1533743983669-94fa5c4338ec?w=560&h=400&fit=crop" alt="Norwegian Forest Cat">
+          <div class="card-body">
+            <h3>Norwegian Forest Cat</h3>
+            <p class="breed-desc">Hardy, adventurous, and friendly. These large, fluffy cats were Viking companions and love the outdoors.</p>
+            <div class="card-meta">
+              <span class="tag tag-temperament">Friendly &amp; Adventurous</span>
+              <span class="tag tag-lifespan">12-16 yrs</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="no-results" id="noResults">
+        No breeds found matching your search. Try a different name!
+      </div>
+    </div>
+  </section>
+
+  <!-- ======= Footer ======= -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-logo">&#128062; Pawsopedia</div>
+      <div class="footer-links">
+        <a href="index.html">Home</a>
+        <a href="dogs.html">Dogs</a>
+        <a href="cats.html">Cats</a>
+        <a href="comparison.html">Compare</a>
+        <a href="about.html">About</a>
+      </div>
+      <div class="social-icons">
+        <a href="#" aria-label="Facebook">fb</a>
+        <a href="#" aria-label="Twitter">tw</a>
+        <a href="#" aria-label="Instagram">ig</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2026 Pawsopedia. All rights reserved. Made with &#10084;&#65039; for pet lovers.</p>
+    </div>
+  </footer>
+
+  <button class="scroll-top-btn" id="scrollTopBtn" aria-label="Scroll to top">&#8679;</button>
+  <script src="js/script.js"></script>
+</body>
+</html>

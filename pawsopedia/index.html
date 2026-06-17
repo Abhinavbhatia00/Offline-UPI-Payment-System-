@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pawsopedia — Discover Dog &amp; Cat Breeds</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- ======= Navigation ======= -->
+  <nav class="navbar" id="navbar">
+    <div class="container">
+      <a href="index.html" class="nav-logo">
+        <span class="logo-icon">&#128062;</span> Pawsopedia
+      </a>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="index.html" class="active">Home</a></li>
+        <li><a href="dogs.html">Dogs</a></li>
+        <li><a href="cats.html">Cats</a></li>
+        <li><a href="comparison.html">Compare</a></li>
+        <li><a href="about.html">About</a></li>
+      </ul>
+      <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- ======= Hero Section ======= -->
+  <section class="hero">
+    <h1>Welcome to <span>Pawsopedia</span></h1>
+    <p>Discover and learn about popular dog and cat breeds from around the world.</p>
+    <div class="hero-images">
+      <img src="https://images.unsplash.com/photo-1587300003388-59208cc962cb?w=520&h=400&fit=crop" alt="Happy dog">
+      <img src="https://images.unsplash.com/photo-1574158622682-e40e69881006?w=520&h=400&fit=crop" alt="Cute cat">
+    </div>
+    <div class="hero-buttons">
+      <a href="dogs.html" class="btn btn-primary">&#128054; Explore Dogs</a>
+      <a href="cats.html" class="btn btn-outline">&#128049; Explore Cats</a>
+    </div>
+  </section>
+
+  <!-- ======= Featured Breeds ======= -->
+  <section class="featured-section">
+    <div class="container">
+      <h2 class="section-title">Featured Breeds</h2>
+      <p class="section-subtitle">A hand-picked selection of beloved dog and cat breeds</p>
+
+      <div class="breed-grid">
+        <!-- Featured Dog 1 -->
+        <div class="breed-card" data-category="dog">
+          <img class="card-image" src="https://images.unsplash.com/photo-1579996232069-0a262e7a31b7?w=560&h=400&fit=crop" alt="Labrador Retriever">
+          <div class="card-body">
+            <h3>Labrador Retriever</h3>
+            <p class="breed-desc">America's most popular dog breed — friendly, outgoing, and active.</p>
+            <div class="card-meta">
+              <span class="tag tag-dog">Dog</span>
+              <span class="tag tag-temperament">Friendly</span>
+              <span class="tag tag-lifespan">10-12 yrs</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Featured Dog 2 -->
+        <div class="breed-card" data-category="dog">
+          <img class="card-image" src="https://images.unsplash.com/photo-1633722715463-d30f4f325e24?w=560&h=400&fit=crop" alt="Golden Retriever">
+          <div class="card-body">
+            <h3>Golden Retriever</h3>
+            <p class="breed-desc">Intelligent, devoted, and friendly — a perfect family companion.</p>
+            <div class="card-meta">
+              <span class="tag tag-dog">Dog</span>
+              <span class="tag tag-temperament">Loyal</span>
+              <span class="tag tag-lifespan">10-12 yrs</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Featured Dog 3 -->
+        <div class="breed-card" data-category="dog">
+          <img class="card-image" src="https://images.unsplash.com/photo-1589941013453-ec89f33b5e95?w=560&h=400&fit=crop" alt="Husky">
+          <div class="card-body">
+            <h3>Siberian Husky</h3>
+            <p class="breed-desc">Energetic, resilient, and strikingly beautiful sled dogs.</p>
+            <div class="card-meta">
+              <span class="tag tag-dog">Dog</span>
+              <span class="tag tag-temperament">Energetic</span>
+              <span class="tag tag-lifespan">12-14 yrs</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Featured Cat 1 -->
+        <div class="breed-card" data-category="cat">
+          <img class="card-image" src="https://images.unsplash.com/photo-1618826411640-d6df44dd3f7a?w=560&h=400&fit=crop" alt="Persian Cat">
+          <div class="card-body">
+            <h3>Persian</h3>
+            <p class="breed-desc">Gentle, calm, and affectionate — the quintessential lap cat.</p>
+            <div class="card-meta">
+              <span class="tag tag-cat">Cat</span>
+              <span class="tag tag-temperament">Calm</span>
+              <span class="tag tag-lifespan">12-17 yrs</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Featured Cat 2 -->
+        <div class="breed-card" data-category="cat">
+          <img class="card-image" src="https://images.unsplash.com/photo-1615497001839-b0a0eac3274c?w=560&h=400&fit=crop" alt="Maine Coon">
+          <div class="card-body">
+            <h3>Maine Coon</h3>
+            <p class="breed-desc">The gentle giant of cats — sociable, playful, and majestic.</p>
+            <div class="card-meta">
+              <span class="tag tag-cat">Cat</span>
+              <span class="tag tag-temperament">Playful</span>
+              <span class="tag tag-lifespan">12-15 yrs</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Featured Cat 3 -->
+        <div class="breed-card" data-category="cat">
+          <img class="card-image" src="https://images.unsplash.com/photo-1568043210943-0b8b09e1e839?w=560&h=400&fit=crop" alt="Siamese Cat">
+          <div class="card-body">
+            <h3>Siamese</h3>
+            <p class="breed-desc">Vocal, intelligent, and strikingly blue-eyed beauties.</p>
+            <div class="card-meta">
+              <span class="tag tag-cat">Cat</span>
+              <span class="tag tag-temperament">Vocal</span>
+              <span class="tag tag-lifespan">15-20 yrs</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======= Footer ======= -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-logo">&#128062; Pawsopedia</div>
+      <div class="footer-links">
+        <a href="index.html">Home</a>
+        <a href="dogs.html">Dogs</a>
+        <a href="cats.html">Cats</a>
+        <a href="comparison.html">Compare</a>
+        <a href="about.html">About</a>
+      </div>
+      <div class="social-icons">
+        <a href="#" aria-label="Facebook">&#xe093;</a>
+        <a href="#" aria-label="Twitter">&#xe094;</a>
+        <a href="#" aria-label="Instagram">&#xe09a;</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2026 Pawsopedia. All rights reserved. Made with &#10084;&#65039; for pet lovers.</p>
+    </div>
+  </footer>
+
+  <!-- Scroll to top -->
+  <button class="scroll-top-btn" id="scrollTopBtn" aria-label="Scroll to top">&#8679;</button>
+
+  <script src="js/script.js"></script>
+</body>
+</html>
