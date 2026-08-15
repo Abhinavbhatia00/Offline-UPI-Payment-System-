@@ -3,6 +3,12 @@ package com.demo.upimesh.controller;
 import com.demo.upimesh.crypto.ServerKeyHolder;
 import com.demo.upimesh.model.*;
 import com.demo.upimesh.service.*;
+import jakarta.validation.Valid;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Positive;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -22,6 +28,8 @@ import java.util.*;
 @RestController
 @RequestMapping("/api")
 public class ApiController {
+
+    private static final Logger log = LoggerFactory.getLogger(ApiController.class);
 
     @Autowired private ServerKeyHolder serverKey;
     @Autowired private DemoService demo;
@@ -49,7 +57,7 @@ public class ApiController {
      * and inject it into the mesh at the given device.
      */
     @PostMapping("/demo/send")
-    public ResponseEntity<?> demoSend(@RequestBody DemoSendRequest req) throws Exception {
+    public ResponseEntity<?> demoSend(@Valid @RequestBody DemoSendRequest req) {
         MeshPacket packet = demo.createPacket(
                 req.senderVpa, req.receiverVpa, req.amount, req.pin,
                 req.ttl == null ? 5 : req.ttl);
@@ -57,19 +65,24 @@ public class ApiController {
         String startDevice = req.startDevice == null ? "phone-alice" : req.startDevice;
         mesh.inject(startDevice, packet);
 
+        String ciphertext = packet.getCiphertext();
+        String preview = ciphertext.length() > 64
+                ? ciphertext.substring(0, 64) + "..."
+                : ciphertext;
+
         return ResponseEntity.ok(Map.of(
                 "packetId", packet.getPacketId(),
-                "ciphertextPreview", packet.getCiphertext().substring(0, 64) + "...",
+                "ciphertextPreview", preview,
                 "ttl", packet.getTtl(),
                 "injectedAt", startDevice
         ));
     }
 
     public static class DemoSendRequest {
-        public String senderVpa;
-        public String receiverVpa;
-        public BigDecimal amount;
-        public String pin;
+        @NotBlank public String senderVpa;
+        @NotBlank public String receiverVpa;
+        @NotNull @Positive public BigDecimal amount;
+        @NotBlank public String pin;
         public Integer ttl;
         public String startDevice;
     }
@@ -116,12 +129,13 @@ public class ApiController {
     public Map<String, Object> meshFlush() {
         List<MeshSimulatorService.BridgeUpload> uploads = mesh.collectBridgeUploads();
 
-        List<Map<String, Object>> results = new ArrayList<>();
-        // Upload them in parallel to actually exercise concurrent idempotency.
+        List<Map<String, Object>> results = Collections.synchronizedList(new ArrayList<>());
+        List<String> errors = Collections.synchronizedList(new ArrayList<>());
+
         uploads.parallelStream().forEach(up -> {
-            BridgeIngestionService.IngestResult r =
-                    bridge.ingest(up.packet(), up.bridgeNodeId(), 5 - up.packet().getTtl());
-            synchronized (results) {
+            try {
+                BridgeIngestionService.IngestResult r =
+                        bridge.ingest(up.packet(), up.bridgeNodeId(), 5 - up.packet().getTtl());
                 results.add(Map.of(
                         "bridgeNode", up.bridgeNodeId(),
                         "packetId", up.packet().getPacketId().substring(0, 8),
@@ -129,13 +143,20 @@ public class ApiController {
                         "reason", r.reason() == null ? "" : r.reason(),
                         "transactionId", r.transactionId() == null ? -1 : r.transactionId()
                 ));
+            } catch (Exception e) {
+                log.error("Flush failed for packet {} via bridge {}: {}",
+                        up.packet().getPacketId(), up.bridgeNodeId(), e.getMessage(), e);
+                errors.add(up.bridgeNodeId() + ": " + e.getMessage());
             }
         });
 
-        return Map.of(
-                "uploadsAttempted", uploads.size(),
-                "results", results
-        );
+        Map<String, Object> response = new LinkedHashMap<>();
+        response.put("uploadsAttempted", uploads.size());
+        response.put("results", results);
+        if (!errors.isEmpty()) {
+            response.put("errors", errors);
+        }
+        return response;
     }
 
     @PostMapping("/mesh/reset")
@@ -154,7 +175,7 @@ public class ApiController {
      */
     @PostMapping("/bridge/ingest")
     public ResponseEntity<?> ingest(
-            @RequestBody MeshPacket packet,
+            @Valid @RequestBody MeshPacket packet,
             @RequestHeader(value = "X-Bridge-Node-Id", defaultValue = "unknown") String bridgeNodeId,
             @RequestHeader(value = "X-Hop-Count", defaultValue = "0") int hopCount) {
 

@@ -73,8 +73,9 @@ public class BridgeIngestionService {
             return IngestResult.settled(packetHash, tx);
 
         } catch (Exception e) {
-            log.error("Ingestion error: {}", e.getMessage(), e);
-            return IngestResult.invalid("?", "internal_error: " + e.getMessage());
+            log.error("Ingestion error for packet from bridge {}: {}",
+                    bridgeNodeId, e.getMessage(), e);
+            return IngestResult.invalid("unknown", "internal_error");
         }
     }
 
